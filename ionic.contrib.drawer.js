@@ -135,6 +135,7 @@ angular.module('ionic.contrib.drawer', ['ionic'])
 
 
   this.close = function() {
+    self.isOpen = false;
     enableAnimation();
     ionic.requestAnimationFrame(function() {
       if(side === LEFT) {
@@ -146,6 +147,7 @@ angular.module('ionic.contrib.drawer', ['ionic'])
   };
 
   this.open = function() {
+    self.isOpen = true;
     enableAnimation();
     ionic.requestAnimationFrame(function() {
       if(side === LEFT) {
