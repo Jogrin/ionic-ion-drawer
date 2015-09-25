@@ -10,11 +10,12 @@
 angular.module('ionic.contrib.drawer', ['ionic'])
 
 .controller('drawerCtrl', ['$element', '$attrs', '$ionicGesture', '$document', function($element, $attr, $ionicGesture, $document) {
+  var self = this;
+  this.isOpen = false;
   var el = $element[0];
   var dragging = false;
   var startX, lastX, offsetX, newX;
   var side;
-
   // How far to drag before triggering
   var thresholdX = 15;
   // How far from edge before triggering
@@ -163,12 +164,17 @@ angular.module('ionic.contrib.drawer', ['ionic'])
     link: function($scope, $element, $attr, ctrl) {
       $element.addClass($attr.side);
       $scope.openDrawer = function() {
-        console.log('open');
         ctrl.open();
       };
       $scope.closeDrawer = function() {
-        console.log('close');
         ctrl.close();
+      };
+      $scope.toggleDrawer = function() {
+          if(ctrl.isOpen) {
+              ctrl.close();
+          } else {
+              ctrl.open();
+          }
       };
     }
   }
