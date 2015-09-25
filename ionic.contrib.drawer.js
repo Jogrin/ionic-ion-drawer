@@ -50,8 +50,6 @@ angular.module('ionic.contrib.drawer', ['ionic'])
 
     dragging = true;
     offsetX = lastX - startX;
-    console.log('Starting drag');
-    console.log('Offset:', offsetX);
   };
 
   var startTargetDrag = function(e) {
@@ -60,8 +58,7 @@ angular.module('ionic.contrib.drawer', ['ionic'])
     dragging = true;
     isTargetDrag = true;
     offsetX = lastX - startX;
-    console.log('Starting target drag');
-    console.log('Offset:', offsetX);
+
   };
 
   var doEndDrag = function(e) {
@@ -76,7 +73,7 @@ angular.module('ionic.contrib.drawer', ['ionic'])
 
     dragging = false;
 
-    console.log('End drag');
+  
     enableAnimation();
 
     ionic.requestAnimationFrame(function() {
@@ -110,7 +107,7 @@ angular.module('ionic.contrib.drawer', ['ionic'])
         } 
       }
     } else {
-      console.log(lastX, offsetX, lastX - offsetX);
+   
       newX = Math.min(0, (-width + (lastX - offsetX)));
       ionic.requestAnimationFrame(function() {
         el.style.transform = el.style.webkitTransform = 'translate3d(' + newX + 'px, 0, 0)';
@@ -124,7 +121,7 @@ angular.module('ionic.contrib.drawer', ['ionic'])
   };
 
   side = $attr.side == 'left' ? LEFT : RIGHT;
-  console.log(side);
+ 
 
   $ionicGesture.on('drag', function(e) {
     doDrag(e);
